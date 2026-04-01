@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion RH - Entreprise</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,11 +27,11 @@
                     </a>
                 @else
                     <a href="{{ route('login') }}"
-                       class="text-gray-600 px-5 py-2 rounded-lg hover:bg-gray-100 transition">
+                       class="text-gray-600 px-5 py-2 rounded-lg text-center hover:bg-gray-100 transition">
                         Se connecter
                     </a>
                     <a href="{{ route('register') }}"
-                       class="bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition">
+                       class="bg-indigo-600 text-white px-5 py-2 rounded-lg text-center hover:bg-indigo-700 transition">
                         S'inscrire
                     </a>
                 @endauth
@@ -73,7 +75,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
-                    <div class="text-4xl mb-4">🏢</div>
+                    <i class="fa-solid fa-building"></i>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Départements</h3>
                     <p class="text-gray-500 text-sm">
                         Organisez votre entreprise en départements clairs et structurés.
@@ -81,7 +83,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
-                    <div class="text-4xl mb-4">💼</div>
+                    <i class="fa-solid fa-briefcase"></i>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Postes</h3>
                     <p class="text-gray-500 text-sm">
                         Définissez et gérez tous les postes disponibles dans votre entreprise.
@@ -89,7 +91,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
-                    <div class="text-4xl mb-4">👥</div>
+                    <i class="fa-solid fa-users"></i>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Employés</h3>
                     <p class="text-gray-500 text-sm">
                         Gérez les informations de vos employés avec recherche et filtres avancés.
@@ -97,7 +99,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
-                    <div class="text-4xl mb-4">📋</div>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Historique</h3>
                     <p class="text-gray-500 text-sm">
                         Suivez l'évolution de carrière de chaque employé avec l'historique des postes.
