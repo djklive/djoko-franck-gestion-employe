@@ -1,2 +1,2 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.pdo_pgsql", "php82Extensions.pgsql"]
+nixPkgs = ["php83", "php83Extensions.pdo_pgsql", "php83Extensions.pgsql"]
