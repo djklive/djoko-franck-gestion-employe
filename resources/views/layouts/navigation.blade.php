@@ -14,35 +14,56 @@
                 <!-- Liens desktop -->
                 <div class="hidden sm:flex sm:items-center sm:ms-10 space-x-1">
                     <a href="{{ route('dashboard') }}"
-                       class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
-                       {{ request()->routeIs('dashboard') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('dashboard') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
                         <i class="fa-solid fa-house"></i>
                         <span>Dashboard</span>
                     </a>
+
+                    @if(auth()->user()->isAdmin())
                     <a href="{{ route('departments.index') }}"
-                       class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
-                       {{ request()->routeIs('departments.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('departments.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
                         <i class="fa-solid fa-building"></i>
                         <span>Départements</span>
                     </a>
                     <a href="{{ route('positions.index') }}"
-                       class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
-                       {{ request()->routeIs('positions.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('positions.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
                         <i class="fa-solid fa-briefcase"></i>
                         <span>Postes</span>
                     </a>
+                    <a href="{{ route('users.index') }}"
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('users.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <span>Utilisateurs</span>
+                    </a>
+                    @endif
+
+                    @if(auth()->user()->isAdmin() || auth()->user()->isRH())
                     <a href="{{ route('employees.index') }}"
-                       class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
-                       {{ request()->routeIs('employees.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('employees.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
                         <i class="fa-solid fa-users"></i>
                         <span>Employés</span>
                     </a>
                     <a href="{{ route('position-histories.index') }}"
-                       class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
-                       {{ request()->routeIs('position-histories.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('position-histories.*') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                         <span>Historique</span>
                     </a>
+                    @endif
+
+                    @if(auth()->user()->isEmployee())
+                    <a href="{{ route('employee.profil') }}"
+                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition
+                    {{ request()->routeIs('employee.profil') ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600' }}">
+                        <i class="fa-solid fa-id-card"></i>
+                        <span>Mon Profil</span>
+                    </a>
+                    @endif
                 </div>
             </div>
 
@@ -88,31 +109,51 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-indigo-800">
         <div class="pt-2 pb-3 space-y-1 px-3">
             <a href="{{ route('dashboard') }}"
-               class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
-               {{ request()->routeIs('dashboard') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('dashboard') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
                 <i class="fa-solid fa-house w-5"></i> Dashboard
             </a>
+
+            @if(auth()->user()->isAdmin())
             <a href="{{ route('departments.index') }}"
-               class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
-               {{ request()->routeIs('departments.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('departments.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
                 <i class="fa-solid fa-building w-5"></i> Départements
             </a>
             <a href="{{ route('positions.index') }}"
-               class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
-               {{ request()->routeIs('positions.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('positions.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
                 <i class="fa-solid fa-briefcase w-5"></i> Postes
             </a>
+            <a href="{{ route('users.index') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('users.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+                <i class="fa-solid fa-users-gear w-5"></i> Utilisateurs
+            </a>
+            @endif
+
+            @if(auth()->user()->isAdmin() || auth()->user()->isRH())
             <a href="{{ route('employees.index') }}"
-               class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
-               {{ request()->routeIs('employees.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('employees.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
                 <i class="fa-solid fa-users w-5"></i> Employés
             </a>
             <a href="{{ route('position-histories.index') }}"
-               class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
-               {{ request()->routeIs('position-histories.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('position-histories.*') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
                 <i class="fa-solid fa-clock-rotate-left w-5"></i> Historique
             </a>
+            @endif
+
+            @if(auth()->user()->isEmployee())
+            <a href="{{ route('employee.profil') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+            {{ request()->routeIs('employee.profil') ? 'bg-indigo-900 text-white' : 'text-indigo-100 hover:bg-indigo-700' }}">
+                <i class="fa-solid fa-id-card w-5"></i> Mon Profil
+            </a>
+            @endif
         </div>
+
         <div class="border-t border-indigo-700 pt-3 pb-3 px-3">
             <div class="flex items-center gap-3 px-3 mb-3">
                 <i class="fa-solid fa-circle-user text-2xl text-indigo-200"></i>

@@ -119,4 +119,17 @@ class EmployeeController extends Controller
         return redirect()->route('employees.index')
                          ->with('success', 'Employé supprimé avec succès.');
     }
+
+    public function monProfil()
+    {
+        $employee = Employee::with(['department', 'currentPosition', 'positionHistories.position'])
+            ->where('user_id', auth()->id())
+            ->first();
+
+        if (!$employee) {
+            return view('employees.no-profil');
+        }
+
+        return view('employees.mon-profil', compact('employee'));
+    }
 }

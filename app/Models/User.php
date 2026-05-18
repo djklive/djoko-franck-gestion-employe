@@ -29,8 +29,23 @@ class User extends Authenticatable
         ];
     }
 
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
+    }
+
+    public function isRH(): bool
+    {
+        return $this->role === 'rh';
+    }
+
+    public function isEmployee(): bool
+    {
+        return $this->role === 'employee';
     }
 }
